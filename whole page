@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fade Masters Barbers | Manchester's Award-Winning Barbershop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4BC;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2a2a2a;
+            --light-gray: #888;
+            --white: #ffffff;
+            --red-accent: #c41e3a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "✦";
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+        }
+
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.4) 100%), 
+                        url('https://images.unsplash.com/photo-1599351431202-6e0c345a3b7e?w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(212, 175, 55, 0.03) 2px,
+                rgba(212, 175, 55, 0.03) 4px
+            );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 40px rgba(0,0,0,0.8);
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--light-gray);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--black);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--gold);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--dark-gray);
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--medium-gray);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .section-header p {
+            color: var(--light-gray);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--black);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--dark-gray);
+            border: 1px solid var(--medium-gray);
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .service-card .price {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--light-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .service-card .duration {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background: linear-gradient(to bottom, var(--dark-gray), var(--black));
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature:hover .feature-icon {
+            background: var(--gold);
+            transform: rotateY(360deg);
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--black);
+            padding-bottom: 4rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+            filter: grayscale(20%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--dark-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews::before {
+            content: '"';
+            position: absolute;
+            top: 2rem;
+            left: 5%;
+            font-size: 20rem;
+            color: rgba(212, 175, 55, 0.05);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .reviews-carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .review-card {
+            background: var(--medium-gray);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.2em;
+        }
+
+        .review-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--white);
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--black);
+            font-size: 1.2rem;
+        }
+
+        .reviewer-info {
+            text-align: left;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .reviewer-verified {
+            font-size: 0.85rem;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .review-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .review-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(0,0,0,0.3);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+        }
+
+        .review-badge img {
+            height: 30px;
+        }
+
+        .review-badge-text {
+            text-align: left;
+        }
+
+        .review-badge-text .score {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .review-badge-text .platform {
+            font-size: 0.8rem;
+            color: var(--light-gray);
+        }
+
+        /* Location Section */
+        .location {
+            background: var(--black);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .location-info {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 600px;
+            margin-left: auto;
+        }
+
+        .location-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-top: 0.2rem;
+        }
+
+        .info-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .info-content p {
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.5rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .hours-grid .day {
+            color: var(--light-gray);
+        }
+
+        .hours-grid .time {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .map-container {
+            background: var(--medium-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(100%) invert(92%) contrast(1.2);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--gold) 0%, #B8941F 100%);
+            color: var(--black);
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-dark {
+            background: var(--black);
+            color: var(--gold);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: 2px solid var(--black);
+        }
+
+        .btn-dark:hover {
+            background: transparent;
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            padding: 4rem 5% 2rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            color: var(--light-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--medium-gray);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .stats-bar {
+                gap: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .location {
+                grid-template-columns: 1fr;
+            }
+
+            .location-info {
+                margin: 0 auto;
+                padding: 3rem 2rem;
+            }
+
+            .map-container {
+                height: 400px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 2rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Booking Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--dark-gray);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid var(--gold);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--light-gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--gold);
+        }
+
+        .modal h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .modal p {
+            color: var(--light-gray);
+            margin-bottom: 2rem;
+        }
+
+        .modal-phone {
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .modal-btn {
+            background: var(--gold);
+            color: var(--black);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .modal-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Fade Masters</a>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#why-us">Why Us</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#location">Location</a>
+            <a href="tel:+441612489496" class="nav-cta">Book Now</a>
+        </div>
+        <div class="mobile-menu" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🏆 Manchester Awards 2019 Winner</div>
+            <h1>Master the Art of <span>The Fade</span></h1>
+            <p class="hero-subtitle">Manchester's premier destination for precision cuts, luxury shaves, and transformative grooming experiences. No appointments needed—just walk in.</p>
+            <div class="hero-buttons">
+                <a href="tel:+441612489496" class="btn-primary">
+                    <span>📞</span> Call Now: 0161 248 9496
+                </a>
+                <a href="#services" class="btn-secondary">View Services</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-number">4.7</span>
+            <span class="stat-label">Google Rating</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">505+</span>
+            <span class="stat-label">Five-Star Reviews</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">0</span>
+            <span class="stat-label">Wait Time</span>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header fade-in">
+            <h2>Our Services</h2>
+            <p>Premium grooming services tailored to your style. All cuts include a consultation, wash, and styling.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">✂️</div>
+                <h3>Man Style</h3>
+                <div class="price">£8.00</div>
+                <p>Precision haircut with fade, taper, or classic scissor cut. Includes lineup and styling with premium products.</p>
+                <span class="duration">⏱ 30 mins</span>
+            </div>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon">🧔</div>
+                <h3>Man Power</h3>
+                <div class="price">£8.00</div>
+                <p>Full haircut service plus beard shaping and trim. Hot towel treatment included for the ultimate refresh.</p>
+                <span class="duration">⏱ 45 mins</span>
+            </div>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon">🪒</div>
+                <h3>Man Down</h3>
+                <div class="price">£8.00</div>
+                <p>Luxury Turkish shave or cut-throat razor shave with steam treatment, hot towels, and facial massage.</p>
+                <span class="duration">⏱ 40 mins</span>
+            </div>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon">🎨</div>
+                <h3>Colour Transformation</h3>
+                <div class="price">From £25</div>
+                <p>Full hair colouring, highlights, or grey blending using premium ammonia-free products.</p>
+                <span class="duration">⏱ 60+ mins</span>
+            </div>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon">👶</div>
+                <h3>Junior Cut</h3>
+                <div class="price">£6.00</div>
+                <p>Specialized cuts for under 12s. Patient, kid-friendly service with lollipop finish!</p>
+                <span class="duration">⏱ 25 mins</span>
+            </div>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon">✨</div>
+                <h3>Facial & Threading</h3>
+                <div class="price">From £5</div>
+                <p>Express facial treatments, eyebrow threading, and waxing services for complete grooming.</p>
+                <span class="duration">⏱ 15-30 mins</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="section-header fade-in">
+            <h2>Why Choose Fade Masters</h2>
+            <p>We're not just a barbershop—we're a grooming destination</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature fade-in">
+                <div class="feature-icon">🏆</div>
+                <h3>Award Winning</h3>
+                <p>Voted Best Barbers in Manchester 2019. Our reputation speaks through every cut.</p>
+            </div>
+            
+            <div class="feature fade-in">
+                <div class="feature-icon">🚶</div>
+                <h3>No Appointments</h3>
+                <p>Walk in anytime during opening hours. We value your time as much as your style.</p>
+            </div>
+            
+            <div class="feature fade-in">
+                <div class="feature-icon">🅿️</div>
+                <h3>Free Parking</h3>
+                <p>Ample free parking behind our shop. Convenient location in Fallowfield's heart.</p>
+            </div>
+            
+            <div class="feature fade-in">
+                <div class="feature-icon">🍺</div>
+                <h3>Complimentary Drinks</h3>
+                <p>Enjoy a selection of cold beverages while you wait or during your service.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header fade-in">
+            <h2>The Fade Gallery</h2>
+            <p>Real cuts, real clients, real masters at work</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80" alt="Skin Fade">
+                <div class="gallery-overlay">
+                    <h4>Skin Fade</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?w=400&q=80" alt="Beard Trim">
+                <div class="gallery-overlay">
+                    <h4>Beard Sculpting</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80" alt="Classic Cut">
+                <div class="gallery-overlay">
+                    <h4>Classic Cut</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80" alt="Textured Crop">
+                <div class="gallery-overlay">
+                    <h4>Textured Crop</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&q=80" alt="Buzz Cut">
+                <div class="gallery-overlay">
+                    <h4>Buzz Cut</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1593702295094-aea8c5f2c61a?w=400&q=80" alt="Pompadour">
+                <div class="gallery-overlay">
+                    <h4>Pompadour</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&q=80" alt="Side Part">
+                <div class="gallery-overlay">
+                    <h4>Side Part</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1634302086887-13b5281d6d09?w=400&q=80" alt="Design">
+                <div class="gallery-overlay">
+                    <h4>Hair Design</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="section-header fade-in">
+            <h2>What Manchester Says</h2>
+            <p>Don't just take our word for it</p>
+        </div>
+        
+        <div class="reviews-carousel fade-in">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Great service, very nice staff and Mo produced a great quality hair cut. The atmosphere is always buzzing and the complimentary drinks are a nice touch!"</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">IT</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">Iwan Thomas</div>
+                        <div class="reviewer-verified">✓ Verified Customer</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="review-stats">
+                <div class="review-badge">
+                    <div class="review-badge-text">
+                        <div class="score">4.7/5</div>
+                        <div class="platform">Google Reviews</div>
+                    </div>
+                </div>
+                <div class="review-badge">
+                    <div class="review-badge-text">
+                        <div class="score">505+</div>
+                        <div class="platform">Total Reviews</div>
+                    </div>
+                </div>
+                <div class="review-badge">
+                    <div class="review-badge-text">
+                        <div class="score">#1</div>
+                        <div class="platform">Manchester 2019</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <p style="color: var(--light-gray); margin-bottom: 1rem;">More recent reviews:</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 700px; margin: 0 auto;">
+                <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 10px; text-align: left; border-left: 3px solid var(--gold);">
+                    <p style="font-style: italic; margin-bottom: 0.5rem;">"Best place for a haircut each worker actually listens to what you want."</p>
+                    <p style="color: var(--gold); font-size: 0.9rem;">— Muttakin C</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 10px; text-align: left; border-left: 3px solid var(--gold);">
+                    <p style="font-style: italic; margin-bottom: 0.5rem;">"They have a great selection of drinks and the wait time is great!"</p>
+                    <p style="color: var(--gold); font-size: 0.9rem;">— Omar Jedal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="location-info fade-in">
+            <h2>Find Us in Fallowfield</h2>
+            <p style="color: var(--light-gray); margin-bottom: 2rem;">Located in the beating heart of Manchester's student city, with ample free parking behind our shop.</p>
+            
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-content">
+                    <h4>Address</h4>
+                    <p>319 Wilmslow Rd, Fallowfield<br>Manchester M14 6NW<br>United Kingdom</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">📞</div>
+                <div class="info-content">
+                    <h4>Phone</h4>
+                    <p>+44 161 248 9496</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">🕐</div>
+                <div class="info-content">
+                    <h4>Opening Hours</h4>
+                    <div class="hours-grid">
+                        <span class="day">Mon - Fri:</span>
+                        <span class="time">9:00 AM - 7:00 PM</span>
+                        <span class="day">Saturday:</span>
+                        <span class="time">9:00 AM - 6:00 PM</span>
+                        <span class="day">Sunday:</span>
+                        <span class="time">10:00 AM - 4:00 PM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://maps.google.com/?q=319+Wilmslow+Rd,+Fallowfield,+Manchester+M14+6NW" target="_blank" class="btn-primary" style="margin-top: 2rem;">
+                Get Directions
+            </a>
+        </div>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2377.1234567890123!2d-2.2194184841234567!3d53.43812345678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1234567890%3A0xabcdef1234567890!2s319%20Wilmslow%20Rd%2C%20Fallowfield%2C%20Manchester%20M14%206NW!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready for Your Best Cut Yet?</h2>
+        <p>Walk in today or call ahead to check availability. Your throne awaits.</p>
+        <a href="tel:+441612489496" class="btn-dark">
+            <span>📞</span> Call Now: 0161 248 9496
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">Fade Masters</a>
+                <p>Officially the Best Barbers in Manchester 2019. Providing premium grooming services in Fallowfield since 2016. No appointments needed—just walk in.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="TikTok">♪</a>
+                    <a href="#" aria-label="Google">G</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Haircuts</a></li>
+                    <li><a href="#services">Beard Trim</a></li>
+                    <li><a href="#services">Hot Towel Shave</a></li>
+                    <li><a href="#services">Colouring</a></li>
+                    <li><a href="#services">Facials</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#why-us">About Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#location">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+441612489496">0161 248 9496</a></li>
+                    <li><a href="mailto:fademastersbarbers@gmail.com">Email Us</a></li>
+                    <li>319 Wilmslow Rd</li>
+                    <li>Manchester M14 6NW</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Fade Masters Barbers. All rights reserved. | Designed for the modern gentleman.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3>Walk In or Call Ahead</h3>
+            <p>Fade Masters operates on a walk-in basis. No appointments needed! Call us to check current wait times.</p>
+            <a href="tel:+441612489496" class="modal-phone">0161 248 9496</a>
+            <a href="#" class="modal-btn" onclick="closeModal()">Got it!</a>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // Modal functions
+        function openModal() {
+            document.getElementById('bookingModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (simplified)
+        function toggleMobileMenu() {
+            alert('Mobile menu would open here. In production, this would slide out a navigation drawer.');
+        }
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
